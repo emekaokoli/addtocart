@@ -1,0 +1,12 @@
+.clear-cart-container {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  min-width: 50%;
+}
+
+.clearcart-button {
+  background-color: #fcb913 !important;
+  color: #fff
+}

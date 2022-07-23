@@ -1,0 +1,8 @@
+.cart-total-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-end;
+  align-items: flex-end;
+  height: 100px;
+}

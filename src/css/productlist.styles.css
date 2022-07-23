@@ -1,0 +1,18 @@
+.productlist-container {
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#amount {
+  width: 5vw;
+}
+
+.selections {
+  display: flex;
+  width: 100%;
+
+}

@@ -1,0 +1,11 @@
+.buy-container {
+  display: 'flex';
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+}
+
+.buy-button {
+  background-color: #fcb913 !important;
+  color: white;
+}
