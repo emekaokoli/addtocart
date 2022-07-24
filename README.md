@@ -1,15 +1,15 @@
-# A simple Add to shopping Cart React App
+# A simple shopping cart App
 
 AddToCart is a simple React app that allows you to add items to a shopping cart with the following functions.
 
-## the app features.
+# The app features.
 
 The app utilized passing props through components so as to re-use states and functions across components.
 
 - lets you select list of items to add to the cart
 - lets you select the quantity of each item to add to the cart by two options:
-- a. adjusting the range slider to increment the quantity of products.
-- b. by input box to enter the value of the quantity of products desired.
+  1. adjusting the range slider to increment the quantity of products.
+  2. by input box to enter the value of the quantity of products desired.
 - the app automatically sums the amound for the user to see before adding to the cart.
 - and finally add the product to cart.
 
@@ -33,27 +33,47 @@ created a custom hook, useDebounce so that the sum for a product does not recalc
 
 used react's memoization with useMemo hook to avoid re-rendering the entire component when the cart is cleared.
 
-### libraries:
+# libraries:
 
-[]: # Library: React
-[]: # Reactstrap
-[]: # Path: react
-[]: # Language: typescript
-[]: # Version: 18.2.0
-[]: # License: MIT
+* Library: React
+* Reactstrap
+* Path: react
+* Language: typescript
+* Version: 18.2.0
 
-### to run the app
-
+# Directory Structure
 ```bash
-
-## Directory Structure
-
-```
-
-AAD DIRECTORY HERE
+src
+ ┣ components
+ ┃ ┣ Buy.tsx
+ ┃ ┣ CartProgressBar.tsx
+ ┃ ┣ CartTable.tsx
+ ┃ ┣ ClearCart.tsx
+ ┃ ┗ ListProducts.tsx
+ ┣ css
+ ┃ ┣ buy.styles.css
+ ┃ ┣ cart.styles.css
+ ┃ ┣ clear-cart.styles.css
+ ┃ ┣ productlist.styles.css
+ ┃ ┗ progressbar.styles.css
+ ┣ data
+ ┃ ┗ products.json
+ ┣ interfaces
+ ┃ ┣ cart.ts
+ ┃ ┣ productItem.ts
+ ┃ ┗ products.ts
+ ┣ utils
+ ┃ ┗ useDebounce.ts
+ ┣ App.css
+ ┣ App.test.tsx
+ ┣ App.tsx
+ ┣ index.css
+ ┣ index.tsx
+ ┣ react-app-env.d.ts
+ ┗ setupTests.ts
 
 ````
-
+### To run the app
 In the project directory, you can run:
 
 ### `yarn start`
@@ -62,20 +82,7 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 live project url: [https://addtocart.vercel.app/](https://addtocart.vercel.app/)
 
-## contributing
-
-```bash
+# Contributing
 Contribute to the project by opening an issue or creating a pull request.
-````
