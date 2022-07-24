@@ -6,3 +6,12 @@
   align-items: flex-end;
   height: 100px;
 }
+
+.cart-text-right {
+  display: flex;
+  text-align: right;
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-top: 50px;
+
+}

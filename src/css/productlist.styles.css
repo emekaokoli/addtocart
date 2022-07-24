@@ -7,7 +7,8 @@
   margin-top: 20px;
 }
 
-#amount {
+#amount,
+#amount-input {
   width: 5vw;
 }
 
@@ -15,4 +16,38 @@
   display: flex;
   width: 100%;
 
+}
+.add-to-cart-button {
+  background-color: #fcb913 !important;
+  color: white;
+}
+
+.first-input-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.second-input-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .first-input-section {
+    flex-direction: column;
+    margin-bottom: 3px;
+  }
+
+  #amount,
+  #amount-input {
+    width: 20vw;
+  }
+
+  .second-input-section {
+    flex-direction: column;
+  }
 }

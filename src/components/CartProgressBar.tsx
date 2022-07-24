@@ -9,14 +9,12 @@ const CartProgressBar = ({ cartItems }: Props) => {
     <div className='progress'>
       <div
         className='progress-bar'
-        // role='progressbar'
         style={{
           width: `${progress * 100}%`,
           backgroundColor: '#006496',
         }}
-        // aria-valuenow={progress}
-        // aria-valuemin='0'
-        // aria-valuemax='100'
+        aria-label='cart progress bar'
+        aria-labelledby='loading progress bar'
       >
         {progress * 100}%
       </div>

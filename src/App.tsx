@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import './App.css';
 import './css/buy.styles.css';
-import './css/cart-total.styles.css';
+import './css/cart.styles.css';
 import './css/clear-cart.styles.css';
 import './css/progressbar.styles.css';
 
@@ -10,13 +10,14 @@ import Buy from './components/Buy';
 import CartProgressBar from './components/CartProgressBar';
 import CartTable from './components/CartTable';
 import ClearCart from './components/ClearCart';
-import ProductList from './components/ProductList';
+import ListProducts from './components/ListProducts';
 
 import productsjson from './data/products.json';
 
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iCart } from './interfaces/cart';
 import { iProduct } from './interfaces/products';
-import { useDebounce } from './utils/useDebounce';
 
 function App() {
   const [productsList, setProductsList] = useState<iProduct[]>([]);
@@ -24,24 +25,20 @@ function App() {
   const [tax, setTax] = useState<number>(0);
   const [subtotal, setSubtotal] = useState<number>(0);
   const [cart, setCart] = useState<iCart[]>([]);
-  let [limit, setLimit] = useState<number>(10);
-  const [totalItemPrice, setTotalItemPrice] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(10);
 
   useEffect(() => {
     setProductsList(productsjson);
   }, []);
 
-  const debouncedCost = useDebounce(totalItemPrice, 1000);
-
-  useEffect(() => {
+  useMemo(() => {
     const totalPrice = cart.reduce((acc, curr) => {
       return acc + curr.unitPrice;
     }, 0);
-    setTotalItemPrice(totalPrice);
-    setTotal(debouncedCost);
-    setTax(debouncedCost * 7);
-    setSubtotal(debouncedCost + tax);
-  }, [cart, tax, debouncedCost]);
+    setTotal(totalPrice);
+    setTax(totalPrice * 7);
+    setSubtotal(totalPrice + tax);
+  }, [cart, tax]);
 
   const addToCart = (product: iCart) => {
     const newCart = [...cart, product];
@@ -62,21 +59,31 @@ function App() {
 
   const clearCart = () => {
     setCart([]);
+    setLimit(10);
   };
 
   return (
     <Container className='App'>
       <Row>
-        <Col md='12' sm='12'>
+        <Col md={12} sm={12}>
           <header className='App-header'>
-            <h1>B24 Shopping Cart</h1>
+            <h1>
+              B<span className='logo'>24</span> Shopping Cart
+            </h1>
+            <p className='wrapper'>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className='cart-icon'
+              />
+              <span>{cart.length.toString()}</span>
+            </p>
           </header>
         </Col>
       </Row>
 
       <Row>
-        <Col sm={12}>
-          <ProductList
+        <Col md={12} sm={12}>
+          <ListProducts
             productsList={productsList}
             onAddToCart={addToCart}
           />
@@ -86,8 +93,8 @@ function App() {
       {cart.length !== 0 ? (
         <>
           <Row>
-            <Col>
-              <h3>items in cart</h3>
+            <Col md={12} sm={12}>
+              <h3 className='cart-text-right'>items in cart</h3>
               <CartTable
                 removeFromCart={removeFromCart}
                 cartItems={cart}

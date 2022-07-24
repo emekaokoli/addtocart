@@ -13,7 +13,7 @@ const ClearCart = ({ cart, clearCart }: Props) => (
     className='clearcart-button'
     onClick={clearCart}
     disabled={cart.length === 0}
-    role={'clears cart button'}
+    role={'clear cart button'}
     aria-label='clear cart button'
   >
     Clear Cart

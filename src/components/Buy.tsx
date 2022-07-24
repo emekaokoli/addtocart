@@ -24,7 +24,7 @@ const Buy = (props: Props) => {
       >
         Buy
       </Button>
-      <Modal isOpen={modal} toggle={toggle} {...props}>
+      <Modal isOpen={modal} toggle={toggle} {...props} role='dialog'>
         <ModalHeader toggle={toggle}>Payment sucess</ModalHeader>
         <ModalBody>
           <p>
@@ -36,10 +36,10 @@ const Buy = (props: Props) => {
           <Button
             className='buy-button'
             onClick={toggle}
-            role={'Cancel button'}
-            aria-label='Cancel button'
+            role={'Close button'}
+            aria-label='Close button'
           >
-            Cancel
+            Close
           </Button>
         </ModalFooter>
       </Modal>

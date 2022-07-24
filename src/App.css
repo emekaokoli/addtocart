@@ -14,3 +14,45 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.wrapper {
+  top: 0;
+  z-index: 99999;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  /* width: 10%;
+  height: 10%; */
+  /* background-color: whitesmoke; */
+}
+
+.wrapper span {
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  font-size: 12px;
+  background: red;
+  border-radius: 50%;
+  padding: 3px;
+
+}
+
+/* .cart-icon {
+  position: absolute;
+  right: 0;
+
+} */
+
+/* :after {
+  content: attr(value);
+  font-size: 12px;
+  background: red;
+  border-radius: 50%;
+  padding: 3px;
+  position: relative;
+  left: -8px;
+  top: -10px;
+  opacity: 0.9;
+  font-size: 24px
+} */
