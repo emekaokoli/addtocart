@@ -1,5 +1,5 @@
-import '../css/clear-cart.styles.css';
 import { iCart } from '../interfaces/cart';
+import '../styles/clear-cart.styles.css';
 import Button from './common/button/Button';
 
 type Props = {
