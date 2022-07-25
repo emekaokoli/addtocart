@@ -1,6 +1,6 @@
-import { Button } from 'reactstrap';
 import '../css/clear-cart.styles.css';
 import { iCart } from '../interfaces/cart';
+import Button from './common/button/Button';
 
 type Props = {
   cart: iCart[];
@@ -15,9 +15,8 @@ const ClearCart = ({ cart, clearCart }: Props) => (
     disabled={cart.length === 0}
     role={'clear cart button'}
     aria-label='clear cart button'
-  >
-    Clear Cart
-  </Button>
+    children={'Clear cart'}
+  />
 );
 
 export default ClearCart;

@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Col, Label, Row } from 'reactstrap';
 
-import '../css/productlist.styles.css';
+import '../styles/productlist.styles.css';
 
-import AddToCart from '../helpers/AddToCart';
-import InputField from '../helpers/Input';
-import SelectProduct from '../helpers/SelectProduct';
+import AddToCart from './AddToCart';
+import InputField from './common/Input/Input';
+import SelectProduct from './SelectProduct';
 
 import { iCart } from '../interfaces/cart';
 import { iProduct } from '../interfaces/products';
@@ -44,6 +44,9 @@ const ListProducts = ({ productsList, onAddToCart }: Props) => {
   };
 
   const checkAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.currentTarget.value) < 1) {
+      setError(true);
+    }
     if (Number(e.currentTarget.value) > maxAmount) {
       e.currentTarget.style.color = 'red';
       setError(true);
@@ -51,6 +54,7 @@ const ListProducts = ({ productsList, onAddToCart }: Props) => {
       e.currentTarget.style.color = 'black';
       setError(false);
     }
+    setError(false);
   };
 
   const handleOnblur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -58,6 +62,10 @@ const ListProducts = ({ productsList, onAddToCart }: Props) => {
       e.currentTarget.style.color = 'black';
       setError(false);
     }
+    if (Number(e.currentTarget.value) < 1) {
+      setError(true);
+    }
+    setError(false);
   };
 
   return (
@@ -98,7 +106,7 @@ const ListProducts = ({ productsList, onAddToCart }: Props) => {
               max={maxAmount}
               disabled={!selectedProduct}
               onBlur={handleOnblur}
-              invalid={error}
+              invalid={error || amount < 1}
             />
             <span>
               {' '}

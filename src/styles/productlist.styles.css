@@ -17,6 +17,7 @@
   width: 100%;
 
 }
+
 .add-to-cart-button {
   background-color: #fcb913 !important;
   color: white;
@@ -50,4 +51,12 @@
   .second-input-section {
     flex-direction: column;
   }
+}
+
+table {
+  text-align: left;
+}
+
+td {
+  text-align: left;
 }

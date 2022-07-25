@@ -13,7 +13,7 @@ const TableItems = ({ cartItems, removeFromCart }: Props) => {
       {cartItems.map(
         ({ productName, unitPrice, totalCost, amount }) => (
           <Fragment key={new Date() + productName}>
-            <tbody>
+            <tbody className='text-center align-content-md-start'>
               <tr>
                 <td>{productName}</td>
                 <td>{unitPrice}</td>

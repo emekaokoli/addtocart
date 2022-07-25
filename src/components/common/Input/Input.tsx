@@ -1,4 +1,8 @@
-import React, { ComponentProps } from 'react';
+import React, {
+  ComponentProps,
+  ForwardRefRenderFunction,
+} from 'react';
+
 import { Input } from 'reactstrap';
 
 type Props = {
@@ -16,7 +20,10 @@ type Props = {
   value?: number | string;
 };
 
-const InputField = ({
+const InputField: ForwardRefRenderFunction<
+  HTMLInputElement,
+  Props
+> = ({
   id,
   type,
   onInput,

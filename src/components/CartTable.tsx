@@ -1,6 +1,6 @@
 import { Col, Container, Row } from 'reactstrap';
-import Table from '../helpers/Table';
 import { iCart } from '../interfaces/cart';
+import Table from './Table';
 
 type Props = {
   cartItems: iCart[];

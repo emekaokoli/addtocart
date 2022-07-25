@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Container } from 'reactstrap';
 import './App.css';
-import './css/buy.styles.css';
-import './css/cart.styles.css';
-import './css/clear-cart.styles.css';
-import './css/progressbar.styles.css';
+import './styles/buy.styles.css';
+import './styles/cart.styles.css';
+import './styles/clear-cart.styles.css';
+import './styles/progressbar.styles.css';
 
 import ListProducts from './components/ListProducts';
 

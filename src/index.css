@@ -6,9 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-    background-color: whitesmoke;
+  background-color: whitesmoke;
     color: black;
+  text-align: left !important;
 }
+
 .logo {
   color: #fcb913;
 }

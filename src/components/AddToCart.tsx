@@ -1,5 +1,6 @@
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import { iCart } from '../interfaces/cart';
+import Button from './common/button/Button';
 
 type Props = {
   selectedProduct: string;
@@ -51,10 +52,9 @@ const AddToCart = ({
         setMaxAmount(0);
         setPrice(0);
       }}
-      disabled={!selectedProduct || error}
-    >
-      Add to Cart
-    </Button>
+      disabled={!selectedProduct || error || amount < 1}
+      children={'Add to cart'}
+    />
   );
 };
 

@@ -1,10 +1,10 @@
 import {
-  Button,
   Modal,
   ModalBody,
   ModalFooter,
   ModalHeader,
 } from 'reactstrap';
+import Button from './common/button/Button';
 
 type Props = {
   modal: boolean;
@@ -33,9 +33,8 @@ const BuySuccess = ({ modal, toggle }: Props) => {
           onClick={toggle}
           role={'Close button'}
           aria-label='Close button'
-        >
-          Close
-        </Button>
+          children={'Close'}
+        />
       </ModalFooter>
     </Modal>
   );

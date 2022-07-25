@@ -1,8 +1,8 @@
 import { iCart } from '../interfaces/cart';
 import Buy from './Buy';
-import CartProgressBar from './CartProgressBar';
 import CartTable from './CartTable';
 import ClearCart from './ClearCart';
+import ProgressBar from './ProgressBar';
 import TotalPriceOfItemsInCart from './TotalPriceOfItems';
 
 type Props = {
@@ -42,7 +42,7 @@ const ItemsInCart = ({
 
           <div className='clear-cart-container'>
             <ClearCart cart={cart} clearCart={clearCart} />
-            <CartProgressBar cartItems={cart.length} />
+            <ProgressBar cartItems={cart.length} />
             <Buy />
           </div>
         </>

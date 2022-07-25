@@ -1,4 +1,4 @@
-import '../css/progressbar.styles.css';
+import '../styles/progressbar.styles.css';
 
 type Props = {
   cartItems: number;
