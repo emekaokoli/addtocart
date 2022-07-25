@@ -24,7 +24,13 @@ const Buy = (props: Props) => {
       >
         Buy
       </Button>
-      <Modal isOpen={modal} toggle={toggle} {...props} role='dialog'>
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+        {...props}
+        role='dialog'
+        aria-labelledby='buy modal'
+      >
         <ModalHeader toggle={toggle}>Payment sucess</ModalHeader>
         <ModalBody>
           <p>

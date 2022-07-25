@@ -11,7 +11,7 @@ const CartTable = ({ cartItems, removeFromCart }: Props) => {
   return (
     <Container>
       <Row>
-        <Col md={12}>
+        <Col md={12} sm={12}>
           <Table borderless responsive>
             <thead>
               <tr>

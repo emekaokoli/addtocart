@@ -16,7 +16,6 @@
 }
 .wrapper {
   top: 0;
-  z-index: 99999;
   position: relative;
   display: flex;
   flex-direction: column;

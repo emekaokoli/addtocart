@@ -1,21 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 import './App.css';
 import './css/buy.styles.css';
 import './css/cart.styles.css';
 import './css/clear-cart.styles.css';
 import './css/progressbar.styles.css';
 
-import Buy from './components/Buy';
-import CartProgressBar from './components/CartProgressBar';
-import CartTable from './components/CartTable';
-import ClearCart from './components/ClearCart';
 import ListProducts from './components/ListProducts';
 
 import productsjson from './data/products.json';
 
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Header from './components/Header';
+import ItemsInCart from './components/ItemsInCart';
 import { iCart } from './interfaces/cart';
 import { iProduct } from './interfaces/products';
 
@@ -29,7 +25,7 @@ function App() {
 
   useEffect(() => {
     setProductsList(productsjson);
-  }, []);
+  }, [productsList]);
 
   useMemo(() => {
     const totalPrice = cart.reduce((acc, curr) => {
@@ -41,7 +37,22 @@ function App() {
   }, [cart, tax]);
 
   const addToCart = (product: iCart) => {
-    const newCart = [...cart, product];
+    const oldProduct = cart.find(
+      (item) => item.productName === product.productName
+    );
+    let newCart: iCart[] = [];
+    if (!oldProduct) {
+      newCart = [...cart, product];
+    } else {
+      newCart = cart.map((item) => {
+        if (item.productName === product.productName) {
+          item.amount += product.amount;
+          item.totalCost += product.totalCost;
+        }
+        return item;
+      });
+    }
+
     if (newCart.length > 10) {
       alert('You can add only 10 products to cart');
     } else {
@@ -64,76 +75,22 @@ function App() {
 
   return (
     <Container className='App'>
-      <Row>
-        <Col md={12} sm={12}>
-          <header className='App-header'>
-            <h1>
-              B<span className='logo'>24</span> Shopping Cart
-            </h1>
-            <p className='wrapper'>
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                className='cart-icon'
-              />
-              <span>{cart.length.toString()}</span>
-            </p>
-          </header>
-        </Col>
-      </Row>
+      <Header cart={cart} />
 
-      <Row>
-        <Col md={12} sm={12}>
-          <ListProducts
-            productsList={productsList}
-            onAddToCart={addToCart}
-          />
-        </Col>
-      </Row>
+      <ListProducts
+        productsList={productsList}
+        onAddToCart={addToCart}
+      />
 
-      {cart.length !== 0 ? (
-        <>
-          <Row>
-            <Col md={12} sm={12}>
-              <h3 className='cart-text-right'>items in cart</h3>
-              <CartTable
-                removeFromCart={removeFromCart}
-                cartItems={cart}
-              />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={12} sm={6}>
-              <div className='cart-total-container'>
-                <div className='cart-total-item'>
-                  <p>
-                    <strong>Cart items Limit: {limit}</strong>
-                  </p>
-                  <strong>Subtotal: </strong>{' '}
-                  <span>{subtotal.toFixed(2)}</span>
-                </div>
-                <div className='cart-total-item'>
-                  <strong className='font-weight-bold'>Tax: </strong>{' '}
-                  <span>{tax.toFixed(2)}</span>
-                </div>
-                <div className='cart-total-item'>
-                  <strong>Total: </strong>{' '}
-                  <span>{total.toFixed(2)}</span>
-                </div>
-              </div>
-              <div className='clear-cart-container'>
-                <ClearCart cart={cart} clearCart={clearCart} />
-                <div className='progressbar-container'>
-                  <CartProgressBar cartItems={cart.length} />
-                </div>
-                <div className='buy-container'>
-                  <Buy />
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </>
-      ) : null}
+      <ItemsInCart
+        cart={cart}
+        removeFromCart={removeFromCart}
+        subtotal={subtotal}
+        tax={tax}
+        total={total}
+        clearCart={clearCart}
+        limit={limit}
+      />
     </Container>
   );
 }
