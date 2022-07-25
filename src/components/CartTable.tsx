@@ -1,5 +1,5 @@
-import React from 'react';
-import { CloseButton, Col, Container, Row, Table } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
+import Table from '../helpers/Table';
 import { iCart } from '../interfaces/cart';
 
 type Props = {
@@ -12,43 +12,11 @@ const CartTable = ({ cartItems, removeFromCart }: Props) => {
     <Container>
       <Row>
         <Col md={12} sm={12}>
-          <Table borderless responsive>
-            <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            {cartItems.map(
-              ({ productName, unitPrice, totalCost, amount }) => (
-                <React.Fragment key={new Date() + productName}>
-                  <tbody>
-                    <tr>
-                      <td>{productName}</td>
-                      <td>{unitPrice}</td>
-                      <td>{amount}</td>
-                      <td>{totalCost}</td>
-                      <td>
-                        <CloseButton
-                          aria-label='close button'
-                          onClick={() =>
-                            removeFromCart({
-                              productName,
-                              unitPrice,
-                              totalCost,
-                              amount,
-                            })
-                          }
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </React.Fragment>
-              )
-            )}
-          </Table>
+          <h3 className='cart-text-right'>Your cart</h3>
+          <Table
+            cartItems={cartItems}
+            removeFromCart={removeFromCart}
+          />
         </Col>
       </Row>
     </Container>

@@ -1,10 +1,9 @@
-import { Col, Row } from 'reactstrap';
 import { iCart } from '../interfaces/cart';
 import Buy from './Buy';
 import CartProgressBar from './CartProgressBar';
 import CartTable from './CartTable';
 import ClearCart from './ClearCart';
-import TotalPriceOfItemsInCart from './TotalPriceOfItemsInCart';
+import TotalPriceOfItemsInCart from './TotalPriceOfItems';
 
 type Props = {
   cart: iCart[];
@@ -29,34 +28,27 @@ const ItemsInCart = ({
     <>
       {cart.length !== 0 ? (
         <>
-          <h3 className='cart-text-right'>items in cart</h3>
           <CartTable
             removeFromCart={removeFromCart}
             cartItems={cart}
           />
 
-          <Row>
-            <Col md={12} sm={6}>
-              <TotalPriceOfItemsInCart
-                subtotal={subtotal}
-                tax={tax}
-                total={total}
-                limit={limit}
-              />
+          <TotalPriceOfItemsInCart
+            subtotal={subtotal}
+            tax={tax}
+            total={total}
+            limit={limit}
+          />
 
-              <div className='clear-cart-container'>
-                <ClearCart cart={cart} clearCart={clearCart} />
-                <div className='progressbar-container'>
-                  <CartProgressBar cartItems={cart.length} />
-                </div>
-                <div className='buy-container'>
-                  <Buy />
-                </div>
-              </div>
-            </Col>
-          </Row>
+          <div className='clear-cart-container'>
+            <ClearCart cart={cart} clearCart={clearCart} />
+            <CartProgressBar cartItems={cart.length} />
+            <Buy />
+          </div>
         </>
-      ) : null}
+      ) : (
+        <p>Cart is empty</p>
+      )}
     </>
   );
 };

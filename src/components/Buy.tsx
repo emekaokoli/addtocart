@@ -1,21 +1,15 @@
 import { useState } from 'react';
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import '../css/buy.styles.css';
+import BuySuccess from './BuySuccess';
 
-type Props = {};
-
-const Buy = (props: Props) => {
-  const [modal, setModal] = useState(false);
+const Buy = () => {
+  const [modal, setModal] = useState<boolean>(false);
 
   const toggle = () => setModal(!modal);
+
   return (
-    <div>
+    <div className='buy-container'>
       <Button
         className='buy-button'
         onClick={toggle}
@@ -24,31 +18,7 @@ const Buy = (props: Props) => {
       >
         Buy
       </Button>
-      <Modal
-        isOpen={modal}
-        toggle={toggle}
-        {...props}
-        role='dialog'
-        aria-labelledby='buy modal'
-      >
-        <ModalHeader toggle={toggle}>Payment sucess</ModalHeader>
-        <ModalBody>
-          <p>
-            Thank you for your purchase. You will receive an email with
-            your order details.
-          </p>
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            className='buy-button'
-            onClick={toggle}
-            role={'Close button'}
-            aria-label='Close button'
-          >
-            Close
-          </Button>
-        </ModalFooter>
-      </Modal>
+      <BuySuccess modal={modal} toggle={toggle} />
     </div>
   );
 };

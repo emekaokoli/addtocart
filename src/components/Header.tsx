@@ -10,18 +10,20 @@ type Props = {
 const Header = ({ cart }: Props) => {
   return (
     <Row>
-      <Col md={12} sm={12}>
+      <Col sm={12} md={12}>
         <header className='App-header'>
-          <h1>
-            B<span className='logo'>24</span> Shopping Cart
-          </h1>
-          <p className='wrapper'>
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              className='cart-icon'
-            />
-            <span>{cart.length.toString()}</span>
-          </p>
+          <nav>
+            <h1>
+              B<span className='logo'>24</span> Shopping Cart
+            </h1>
+            <p className='wrapper'>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className='cart-icon'
+              />
+              <span>{cart.length.toString()}</span>
+            </p>
+          </nav>
         </header>
       </Col>
     </Row>

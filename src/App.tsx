@@ -76,21 +76,22 @@ function App() {
   return (
     <Container className='App'>
       <Header cart={cart} />
+      <main>
+        <ListProducts
+          productsList={productsList}
+          onAddToCart={addToCart}
+        />
 
-      <ListProducts
-        productsList={productsList}
-        onAddToCart={addToCart}
-      />
-
-      <ItemsInCart
-        cart={cart}
-        removeFromCart={removeFromCart}
-        subtotal={subtotal}
-        tax={tax}
-        total={total}
-        clearCart={clearCart}
-        limit={limit}
-      />
+        <ItemsInCart
+          cart={cart}
+          removeFromCart={removeFromCart}
+          subtotal={subtotal}
+          tax={tax}
+          total={total}
+          clearCart={clearCart}
+          limit={limit}
+        />
+      </main>
     </Container>
   );
 }

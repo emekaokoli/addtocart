@@ -1,9 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { Col, Label, Row } from 'reactstrap';
+
 import '../css/productlist.styles.css';
+
 import AddToCart from '../helpers/AddToCart';
 import InputField from '../helpers/Input';
 import SelectProduct from '../helpers/SelectProduct';
+
 import { iCart } from '../interfaces/cart';
 import { iProduct } from '../interfaces/products';
 import { useDebounce } from '../utils/useDebounce';
@@ -97,7 +100,10 @@ const ListProducts = ({ productsList, onAddToCart }: Props) => {
               onBlur={handleOnblur}
               invalid={error}
             />
-            X {price} = {useDebounce(cost, 1000).toFixed(2)}
+            <span>
+              {' '}
+              X {price} = {useDebounce(cost, 1000).toFixed(2)}
+            </span>
             <AddToCart
               amount={amount}
               cost={cost}
